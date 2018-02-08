@@ -16,10 +16,20 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    
+
     <style name="ToolbarColoredBackArrow" parent="AppTheme">
 
         <item name="android:textColorSecondary">@android:color/background_dark</item>
+    </style>
+
+    <style name="FullScreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullScreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="FullScreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
     </style>
 
 </resources>
