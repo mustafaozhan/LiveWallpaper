@@ -19,6 +19,7 @@
             android:layout_height="wrap_content" />
 
         <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/navigation"
@@ -28,11 +29,11 @@
             android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             app:itemIconTint="@android:color/background_dark"
             app:itemTextColor="@android:color/background_dark"
-            app:menu="@menu/bottom_navigation_menu"
-            android:layout_alignParentBottom="true" />
+            app:menu="@menu/bottom_navigation_menu" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
