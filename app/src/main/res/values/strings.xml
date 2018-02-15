@@ -9,4 +9,6 @@
     <string name="news">News</string>
     <string name="explore">Explore</string>
     <string name="upload">Upload</string>
+    <string name="img">img</string>
+    <string name="category_name">Category Name</string>
 </resources>
