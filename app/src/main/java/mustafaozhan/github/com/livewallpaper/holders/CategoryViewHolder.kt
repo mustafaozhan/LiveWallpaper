@@ -2,6 +2,10 @@ package mustafaozhan.github.com.livewallpaper.holders
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import kotlinx.android.synthetic.main.layout_category_item.view.*
+import mustafaozhan.github.com.livewallpaper.R
 import mustafaozhan.github.com.livewallpaper.interfaces.ItemClickListener
 
 /**
@@ -9,14 +13,19 @@ import mustafaozhan.github.com.livewallpaper.interfaces.ItemClickListener
  */
 class CategoryViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
     private var itemClickListener: ItemClickListener? = null
+    var backgroundImage: ImageView? = null
+    var categoryName: TextView? = null
 
     init {
         itemView?.setOnClickListener(this)
+        backgroundImage = itemView?.findViewById(R.id.img)
+        categoryName = itemView?.findViewById(R.id.txtName)
     }
 
-    fun setItemClickListener(itemClickListener: ItemClickListener){
-        this.itemClickListener=itemClickListener
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListener = itemClickListener
     }
+
     override fun onClick(v: View?) {
         itemClickListener?.onClick(v!!, adapterPosition)
     }
