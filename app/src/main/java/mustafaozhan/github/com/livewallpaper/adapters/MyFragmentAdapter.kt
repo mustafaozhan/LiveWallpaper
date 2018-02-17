@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.google.firebase.FirebaseApp
 import mustafaozhan.github.com.livewallpaper.fragments.CategoryFragment
 import mustafaozhan.github.com.livewallpaper.fragments.DailyPopularFragment
 import mustafaozhan.github.com.livewallpaper.fragments.RecentsFragment

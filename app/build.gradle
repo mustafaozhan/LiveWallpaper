@@ -37,3 +37,5 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.0.2'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 }
+
+apply plugin: 'com.google.gms.google-services'

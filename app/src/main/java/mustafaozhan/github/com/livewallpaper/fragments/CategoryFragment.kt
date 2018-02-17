@@ -1,5 +1,6 @@
 package mustafaozhan.github.com.livewallpaper.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -10,12 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_category.*
 import mustafaozhan.github.com.livewallpaper.R
 import mustafaozhan.github.com.livewallpaper.common.Common
 import mustafaozhan.github.com.livewallpaper.holders.CategoryViewHolder
@@ -27,6 +28,7 @@ import mustafaozhan.github.com.livewallpaper.model.CategoryItem
  */
 class CategoryFragment : Fragment() {
 
+    private var mRecyclerView: RecyclerView? = null
     private var database: FirebaseDatabase? = null
     private var categoryBackground: DatabaseReference? = null
 
@@ -34,6 +36,7 @@ class CategoryFragment : Fragment() {
     private var adapter: FirebaseRecyclerAdapter<CategoryItem, CategoryViewHolder>? = null
 
     init {
+        FirebaseApp.initializeApp(activity)
         database = FirebaseDatabase.getInstance()
         categoryBackground = database!!.getReference(Common.STR_CATEGORY_BACKGROUND)
 
@@ -48,7 +51,7 @@ class CategoryFragment : Fragment() {
                         .networkPolicy(NetworkPolicy.OFFLINE)
                         .into(holder.backgroundImage, object : Callback {
                             override fun onSuccess() {
-                                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
                             }
 
                             override fun onError() {
@@ -57,7 +60,7 @@ class CategoryFragment : Fragment() {
                                         .error(R.drawable.ic_error_black_24dp)
                                         .into(holder.backgroundImage, object : Callback {
                                             override fun onSuccess() {
-                                                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
                                             }
 
                                             override fun onError() {
@@ -71,7 +74,7 @@ class CategoryFragment : Fragment() {
                 holder.categoryName?.text = model.name
                 holder.setItemClickListener(object : ItemClickListener {
                     override fun onClick(view: View, position: Int) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
                     }
 
                 })
@@ -88,7 +91,9 @@ class CategoryFragment : Fragment() {
     }
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         private var INSTANCE: CategoryFragment? = null
+
         fun getInstance(): CategoryFragment? {
             if (INSTANCE == null)
                 INSTANCE = CategoryFragment()
@@ -98,11 +103,13 @@ class CategoryFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val view = inflater.inflate(R.layout.fragment_category, container, false)
 
-        recyclerViewCategory.setHasFixedSize(true)
+        mRecyclerView = view.findViewById(R.id.recyclerViewCategory)
+        mRecyclerView?.setHasFixedSize(true)
         val gridLayoutManager = GridLayoutManager(activity, 2)
-        recyclerViewCategory.layoutManager = gridLayoutManager
+        mRecyclerView?.layoutManager = gridLayoutManager
 
         setCategory()
 
@@ -111,7 +118,7 @@ class CategoryFragment : Fragment() {
 
     private fun setCategory() {
         adapter?.startListening()
-        recyclerViewCategory.adapter = adapter
+        mRecyclerView?.adapter = adapter
     }
 
     override fun onStart() {
@@ -127,7 +134,7 @@ class CategoryFragment : Fragment() {
     }
 
     override fun onResume() {
-        if (adapter!=null){
+        if (adapter != null) {
             adapter!!.startListening()
         }
         super.onResume()
