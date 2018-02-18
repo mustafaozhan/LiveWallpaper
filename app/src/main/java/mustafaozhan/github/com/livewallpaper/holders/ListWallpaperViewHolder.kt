@@ -10,16 +10,20 @@ import mustafaozhan.github.com.livewallpaper.interfaces.ItemClickListener
  * Created by Mustafa Ozhan on 2/18/18 at 8:14 PM on Arch Linux wit Love <3.
  */
 class ListWallpaperViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-    private val itemClickListenner: ItemClickListener? = null
+    private var itemClickListener: ItemClickListener? = null
 
-    private var wallpaper: ImageView? = null
+     var wallpaper: ImageView? = null
 
     init {
         itemView?.setOnClickListener(this)
-        wallpaper = itemView?.findViewById(R.id.imageView)
+        wallpaper = itemView?.findViewById(R.id.image)
     }
 
     override fun onClick(view: View?) {
-        itemClickListenner?.onClick(view!!, adapterPosition)
+        itemClickListener?.onClick(view!!, adapterPosition)
+    }
+
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListener = itemClickListener
     }
 }

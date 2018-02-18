@@ -1,6 +1,8 @@
 package mustafaozhan.github.com.livewallpaper.fragments
 
 import android.annotation.SuppressLint
+import android.app.ListActivity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -74,7 +76,9 @@ class CategoryFragment : Fragment() {
                 holder.categoryName?.text = model.name
                 holder.setItemClickListener(object : ItemClickListener {
                     override fun onClick(view: View, position: Int) {
-
+                        Common.CATEGORY_ID_SELECTED = adapter!!.getRef(position).key
+                        Common.CATEGORY_SELECTED = model.name!!
+                        startActivity(Intent(activity, ListActivity::class.java))
                     }
 
                 })
