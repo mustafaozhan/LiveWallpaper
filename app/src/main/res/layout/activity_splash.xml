@@ -7,6 +7,7 @@
     tools:context="mustafaozhan.github.com.livewallpaper.activities.SplashActivity">
 
     <com.flaviofaria.kenburnsview.KenBurnsView
+
         android:src="@drawable/splash"
         android:id="@+id/mKenBurnsView"
         android:layout_width="match_parent"
