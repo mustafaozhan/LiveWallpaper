@@ -22,9 +22,6 @@ class CategoryViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), V
         categoryName = itemView?.findViewById(R.id.txtName)
     }
 
-    fun setItemClickListener(itemClickListener: ItemClickListener) {
-        this.itemClickListener = itemClickListener
-    }
 
     override fun onClick(v: View?) {
         itemClickListener?.onClick(v!!, adapterPosition)
