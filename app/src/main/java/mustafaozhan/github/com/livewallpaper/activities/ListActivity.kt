@@ -25,9 +25,9 @@ import mustafaozhan.github.com.livewallpaper.model.WallpaperItem
 
 class ListActivity : AppCompatActivity() {
 
-    var query: Query? = null
+    private var query: Query? = null
     var options: FirebaseRecyclerOptions<WallpaperItem>? = null
-    var adapter: FirebaseRecyclerAdapter<WallpaperItem, ListWallpaperViewHolder>? = null
+    private var adapter: FirebaseRecyclerAdapter<WallpaperItem, ListWallpaperViewHolder>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +66,7 @@ class ListActivity : AppCompatActivity() {
                 Picasso.with(baseContext)
                         .load(model.imageLink)
                         .networkPolicy(NetworkPolicy.OFFLINE)
-                        .into(holder.wallpaper,object : Callback {
+                        .into(holder.wallpaper, object : Callback {
                             override fun onSuccess() {
                                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                             }
@@ -76,20 +76,20 @@ class ListActivity : AppCompatActivity() {
                                         .load(model.imageLink)
                                         .networkPolicy(NetworkPolicy.OFFLINE)
                                         .error(R.drawable.ic_error_black_24dp)
-                                        .into(holder.wallpaper,object :Callback{
+                                        .into(holder.wallpaper, object : Callback {
                                             override fun onSuccess() {
                                                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                                             }
 
                                             override fun onError() {
-                                               Log.d("Error:","could not fetch the image")
+                                                Log.d("Error:", "could not fetch the image")
                                             }
 
                                         })
                             }
 
                         })
-                holder.setItemClickListener(object :ItemClickListener{
+                holder.setItemClickListener(object : ItemClickListener {
                     override fun onClick(view: View, position: Int) {
 
                     }
@@ -125,7 +125,7 @@ class ListActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId==android.R.id.home)
+        if (item?.itemId == android.R.id.home)
             finish()
         return super.onOptionsItemSelected(item)
     }

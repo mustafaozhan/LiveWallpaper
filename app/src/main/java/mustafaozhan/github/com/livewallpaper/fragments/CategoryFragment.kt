@@ -1,7 +1,7 @@
 package mustafaozhan.github.com.livewallpaper.fragments
 
 import android.annotation.SuppressLint
-import android.app.ListActivity
+
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -20,6 +20,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import mustafaozhan.github.com.livewallpaper.R
+import mustafaozhan.github.com.livewallpaper.activities.ListActivity
 import mustafaozhan.github.com.livewallpaper.common.Common
 import mustafaozhan.github.com.livewallpaper.holders.CategoryViewHolder
 import mustafaozhan.github.com.livewallpaper.interfaces.ItemClickListener
@@ -78,7 +79,8 @@ class CategoryFragment : Fragment() {
                     override fun onClick(view: View, position: Int) {
                         Common.CATEGORY_ID_SELECTED = adapter!!.getRef(position).key
                         Common.CATEGORY_SELECTED = model.name!!
-                        startActivity(Intent(activity, ListActivity::class.java))
+
+                        activity!!.startActivity(Intent(activity, ListActivity::class.java))
                     }
 
                 })
