@@ -24,7 +24,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.ListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/FullScreenTheme" />
 
     </application>
 
