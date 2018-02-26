@@ -59,6 +59,7 @@ class ListActivity : AppCompatActivity() {
                         .inflate(R.layout.layout_wallpaper_item, parent, false)
 
                 val height = parent.measuredHeight / 2
+                itemView.minimumHeight = height
                 return ListWallpaperViewHolder(itemView)
             }
 
@@ -68,17 +69,14 @@ class ListActivity : AppCompatActivity() {
                         .networkPolicy(NetworkPolicy.OFFLINE)
                         .into(holder.wallpaper, object : Callback {
                             override fun onSuccess() {
-                                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                             }
 
                             override fun onError() {
                                 Picasso.with(baseContext)
                                         .load(model.imageLink)
-                                        .networkPolicy(NetworkPolicy.OFFLINE)
                                         .error(R.drawable.ic_error_black_24dp)
                                         .into(holder.wallpaper, object : Callback {
                                             override fun onSuccess() {
-                                                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                                             }
 
                                             override fun onError() {
@@ -101,6 +99,7 @@ class ListActivity : AppCompatActivity() {
         }
         (adapter as FirebaseRecyclerAdapter<WallpaperItem, ListWallpaperViewHolder>).startListening()
 
+        mRecyclerList.adapter = adapter
 
     }
 
